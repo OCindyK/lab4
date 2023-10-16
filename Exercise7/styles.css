@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    border: 2px solid #000;
+    position: absolute;
+    top: 0;
+    animation: slideAndChange 4s ease-in-out infinite;
+}
+
+@keyframes slideAndChange {
+    0%, 100% {
+        top: 0;
+        background-color: #04436c;
+    }
+    50% {
+        top: calc(100vh - 100px);
+        background-color: #d6f0fa;
+    }
+}

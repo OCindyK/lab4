@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+      }
+      .card {
+        padding: 10px;
+        border: 2px solid black;
+        margin: 10px;
+      }
+      .card-title {
+        font-weight: 600;
+        font-size: 3em;
+        padding: 0 0 10px 0;
+      }
+      .card-description {
+        font-weight: 400;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="card-template">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title"></div>
+          <div class="card-text"></div>
+        </div>
+      </div>
+    </template>
+
+    <div id="card-list"></div>
+
+    <script>
+      const artist = {
+        name: "Van Gogh",
+        portfolio: [
+          {
+            title: "portrait",
+            url:
+              "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image",
+          },
+          {
+            title: "sky",
+            url:
+              "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg",
+          },
+        ],
+      };
+
+      function addCard(title, imageURL) {
+
+        const template = document
+          .getElementById("card-template")
+          .content.cloneNode(true);
+
+
+        template.querySelector(".card-title").innerText = title;
+
+        // Create an image element and its attributes
+        const image = document.createElement("img");
+        image.src = imageURL;
+        image.alt = title;
+        image.classList.add("card-image");
+        template.querySelector(".card-text").appendChild(image);
+
+
+        document.querySelector("#card-list").appendChild(template);
+      }
+
+      artist.portfolio.forEach((item) => {
+        addCard(item.title, item.url);
+      });
+    </script>
+  </body>
+</html>

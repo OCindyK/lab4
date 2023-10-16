@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Card Grid</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Card Grid Layout</h1>
+        <div class="row" id="card-container">
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Sample data for cards
+        const cardData = [
+            {
+                title: "Card 1",
+                image: "image1.jpg",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+            },
+            {
+                title: "Card 2",
+                image: "image2.jpg",
+                description: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+            },
+            {
+                title: "Card 3",
+                image: "image3.jpg",
+                description: "Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.",
+            },
+            {
+                title: "Card 4",
+                image: "image4.jpg",
+                description: "Nulla porttitor accumsan tincidunt. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.",
+            },
+        ];
+
+        // Function to create and populate cards
+        function createCard(card) {
+            const cardTemplate = document.createElement("div");
+            cardTemplate.classList.add("col", "mb-4");
+
+            cardTemplate.innerHTML = `
+                <div class="card">
+                    <img src="${card.image}" class="card-img-top" alt="${card.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${card.title}</h5>
+                        <p class="card-text">${card.description}</p>
+                    </div>
+                </div>
+            `;
+
+            return cardTemplate;
+        }
+
+        // Populate the card container with cards
+        const cardContainer = document.getElementById("card-container");
+        cardData.forEach((card) => {
+            const newCard = createCard(card);
+            cardContainer.appendChild(newCard);
+        });
+    </script>
+</body>
+</html>
