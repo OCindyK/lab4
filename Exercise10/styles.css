@@ -1,0 +1,22 @@
+body {
+  margin-top: 35px;
+}
+
+.card {
+  margin-top: 100px;
+  width: 18rem;
+}
+
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.dropdown-menu {
+  display: none;
+}
+
+.no-matches {
+  font-weight: bold;
+  margin-top: 150px;
+}
