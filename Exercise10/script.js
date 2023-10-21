@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.querySelector("#selectCategory").appendChild(dropdownMenu);
 
   let isDropdownOpen = false;
-  let productsData = []; // Store the product data
+  let productsData = [];
 
   document.querySelector("#selectCategory").addEventListener("click", () => {
     if (isDropdownOpen) {
@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Fetch products and store data
   fetch("https://fakestoreapi.com/products")
     .then((response) => response.json())
     .then((data) => {
@@ -43,12 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
         dropdownMenu.appendChild(option);
       });
 
-      // Display the first category by default
       filterByCategory(categories[0]);
     })
     .catch((error) => console.error("Error:", error));
 
-  // Search functionality
   searchInput.addEventListener("input", () => {
     const searchValue = searchInput.value.toLowerCase();
     const matchingProducts = productsData.filter((product) =>
@@ -62,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
         displayProducts(matchingProducts);
       }
     } else {
-      // Display all products for the selected category
       const selectedCategory = dropdownMenu.querySelector(".active");
       if (selectedCategory) {
         filterByCategory(selectedCategory.textContent);
@@ -70,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Add an event listener to the "Home" link to display all products
   document.querySelector(".nav-link.home").addEventListener("click", () => {
     displayProducts(productsData);
   });
